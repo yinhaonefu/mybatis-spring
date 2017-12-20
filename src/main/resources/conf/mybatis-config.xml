@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+    <typeAliases>
+        <!--别名会在RoleMapper.xml中指定sql返回结果类型使用-->
+        <typeAlias alias="role" type="com.mybatis.test.domain.Role"/>
+    </typeAliases>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/my_test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="lijinqiu1983#A"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/RoleMapper.xml"/>
+    </mappers>
+</configuration>
