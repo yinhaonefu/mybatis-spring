@@ -3,9 +3,15 @@
 
 
 <configuration>
+    <properties resource="conf/jdbc.properties"/>
     <typeAliases>
         <!--别名会在RoleMapper.xml中指定sql返回结果类型使用-->
         <typeAlias alias="role" type="com.mybatis.test.domain.Role"/>
+
+        <!--别名包括mybatis自带别名（参考TypeAliasRegistry）和自定义别名-->
+        <!--如果需要配置很多自定义类的别名，可以指定路径让mybatis进行扫描-->
+        <!--扫描中的类可以使用@Alias("role")在类上指定别名，如果不指定会自动将类名首字母变小写作为别名（注意冲突）-->
+        <!--<package name="com.mybatis.test.domain"/>-->
     </typeAliases>
 
     <environments default="dev">
@@ -14,10 +20,10 @@
                 <property name="autoCommit" value="false"/>
             </transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/my_test"/>
-                <property name="username" value="root"/>
-                <property name="password" value="lijinqiu1983#A"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
