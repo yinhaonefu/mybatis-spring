@@ -10,4 +10,7 @@ import com.mybatis.test.domain.Role;
  */
 public interface RoleMapper {
     public Role getRole(long id);
+    public int deleteRole(long id);
+    public int insertRole(Role role);
+
 }
